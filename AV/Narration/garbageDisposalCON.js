@@ -2,55 +2,11 @@
 // Written by Sushma Mandava
 // garbage collector
 //variable xPosition controls the horizonatl position of the visualization
-function textToSpeech(text) {
-    var u = new SpeechSynthesisUtterance();
-    u.text = text;
-    u.lang = 'en-US';
-    u.rate = 1.0;
-    speechSynthesis.speak(u);
-}
 
-function getSlideText(slideNumber) {
-    switch (slideNumber) {
-        case 1:
-            return "This slide show will explain Java Garbage Collection";
-        case 2:
-            return "Garbage collection is a mechanism that is frequently invoked by the Java Virtual Machine to get rid of the unused heap memory objects."
-        case 3:
-            return "Objects are unreferenced when they. 1-become null. 2-assigned to other reference. 3-anonymous objects";
-        case 4:
-            return "1) Becoming Null";
-        case 5:
-            return "2) Assigned to another reference";
-        case 6:
-            return "3) anonymous object";
-        case 7:
-            return "Now we will consider a small program to demonstrate garbage collection. Consider the following code";
-        case 8:
-            return "The method is called with the parameter e1. Object el will be in heap memory";
-        case 9:
-            return "Object first will dynamically allocated memory from heap memory";
-        case 10:
-            return "The same will happen for second";
-        case 11:
-            return "Now first reference becomes null. This leaves the object (Alex, 1500) unreferenced and garbage collector may remove it anytime it feels that it has to empty space in heap memory";
-        case 12:
-            return "Now new objects will be added to heap memory";
-        case 13:
-            return "Now reference second points to third object. Thus the object (John, 2000) is unreferenced. Now we have 2 objects that are subject to Garbage Collection removal";
-        case 14:
-        case 15:
-            return " ";
-        case 16:
-            return "Now we need to define a new object but there is not enough space for it. This will trigger Garbage Collector to start looking for objects that are unreferenced. This will lead to removing 3 objects from heap memory. After that the last object will be created in the available space in heap memory";
-        case 17:
-            return "At the end of this method, there is only one object remaining, which is el. This object will not be selected by Garbage Collector because it is passed to the method and has another reference in another place. The last object will be unreferenced and will be removed by Garbage Collector at any time";
-    }
-}
-
+   
 $(document).ready(function() {
   "use strict";
-  var avSlideNumber = 1;
+  
   var av_name = "garbageDisposalCON";
   var config = ODSA.UTILS.loadConfig({av_name: av_name}),
       interpret = config.interpreter,       // get the interpreter
@@ -64,12 +20,14 @@ $(document).ready(function() {
   var lengthBig = 430;
   var widthSmall = 120;
   var lengthSmall = 65;
-  // Load the config object with interpreter and code created by odsaUtils.js
+  
   // Slide 1
   //pseudo.hide();
-  av.umsg("This slide show will explain Java Garbage Collection");
+
+ 	av.umsg("This slide show will explain Java Garbage Collection");   
+
   //creating the arrows
-  var e1Arrow = av.g.line(xPosition + 490,  yPosition + (lengthSmall / 2) + 70, xPosition + 540,
+   var e1Arrow = av.g.line(xPosition + 490,  yPosition + (lengthSmall / 2) + 70, xPosition + 540,
             yPosition + (lengthSmall / 2) + 70,
             {"arrow-end": "classic-wide-long", "stroke-width": 2});
   var firstArrow = av.g.line(xPosition + 490,  yPosition + (lengthSmall / 2) + 175, xPosition + 540,
@@ -87,11 +45,12 @@ $(document).ready(function() {
   thirdArrow.hide();
   av.displayInit();
   av.step();
-  //Slide 2
-  av.umsg("Garbage collection is a mechanism that is frequently invoked by the Java Virtual Machine to get rid of the unused heap memory objects.");
+  //Slide 2 
+
+	av.umsg("Garbage collection is a mechanism that is frequently invoked by the Java Virtual Machine to get rid of the unused heap memory objects.");  
   av.step();
   //Slide 3
-  av.umsg("Objects are unreferenced when they: ");
+  av.umsg("Objects are unreferenced when they. 1-become null. 2-assigned to other reference. 3-anonymous objects");
   var label1 = av.label("1-become null", {top: yPosition, left: xPosition});
   var label2 = av.label("2-assigned to other reference", {top: yPosition + 40, left: xPosition});
   var label3 = av.label("3-anonymous objects", {top: yPosition + 80, left: xPosition});
@@ -125,7 +84,7 @@ $(document).ready(function() {
   av.step();
   //Slide 8
   pseudo.setCurrentLine("methodCall");
-  av.umsg("The method is called with the parameter e1. Object el will be in heap memory");
+  av.umsg("The method is called with the parameter e1. Object e1 will be in heap memory");
   e1Arrow.show();
   av.label("<tt>e1</tt>", {top: yPosition + 70 + (lengthSmall / 2) - 30, left: xPosition + 450});
   av.label("heap", {top: yPosition + 10, left: xPosition + 570});
@@ -183,7 +142,7 @@ $(document).ready(function() {
   av.step();
   //Slide 13
   pseudo.setCurrentLine("secondToFirst");
-  av.umsg("Now reference second points to third object. Thus the object (John, 2000) is unreferenced. Now we have 2 objects that are subject to Garbage Collection removal");
+    av.umsg("Now reference second points to third object. Thus the object (John, 2000) is unreferenced. Now we have 2 objects that are subject to Garbage Collection removal");
   rect2.hide();
   labelThird.hide();
   labelSecond.hide();
@@ -200,7 +159,7 @@ $(document).ready(function() {
   labelThird = av.label("<tt>third</tt>", {top: yPosition + 365 + (lengthSmall / 2) + 20, left: xPosition + 435});
   av.step();
   //Slide 14
-  av.umsg();
+  av.umsg("");
   var xline1 = av.g.line(xPosition + 530, yPosition + 160, xPosition + 550 + widthSmall + 20, yPosition + 175 + lengthSmall + 10, {"stroke-width": 3});
   var xline2 = av.g.line(xPosition + 550 + widthSmall + 20, yPosition + 160, xPosition + 530, yPosition + 175 + lengthSmall + 10, {"stroke-width": 3});
   var yline1 = av.g.line(xPosition + 530, yPosition + 265, xPosition + 550 + widthSmall + 20, yPosition + 280 + lengthSmall + 10, {"stroke-width": 3});
@@ -219,7 +178,7 @@ $(document).ready(function() {
   yline2.hide();
   av.step();
   //Slide 16
-  av.umsg();
+  av.umsg("");
   pseudo.setCurrentLine("last");
   xline1.hide();
   xline2.hide();
@@ -232,30 +191,14 @@ $(document).ready(function() {
   labelFirst = av.label("<tt>last</tt>", {top: yPosition + 175 + (lengthSmall / 2) - 30, left: xPosition + 435});
   labelAlex = av.label("Fox", {top: yPosition + 175, left: xPosition + 550 + (widthSmall / 2) - 15});
   labelAlexPay = av.label("1000", {top: yPosition + 195, left: xPosition + 540 + (widthSmall / 2) - 10});
+  
   av.umsg("Now we need to define a new object but there is not enough space for it. This will trigger Garbage Collector to start looking for objects that are unreferenced. This will lead to removing 3 objects from heap memory. After that the last object will be created in the available space in heap memory");
   av.step();
   //Slide 17
-  av.umsg("At the end of this method, there is only one object remaining, which is el. This object will not be selected by Garbage Collector because it is passed to the method and has another reference in another place. The last object will be unreferenced and will be removed by Garbage Collector at any time");
+  av.umsg("At the end of this method, there is only one object remaining, which is e1. This object will not be selected by Garbage Collector because it is passed to the method and has another reference in another place. The last object will be unreferenced and will be removed by Garbage Collector at any time");
   rect1.hide();
   labelFirst.hide();
   firstArrow.hide();
   rect1 = av.g.rect(xPosition + 550, yPosition + 175, widthSmall, lengthSmall, {stroke: "silver"});
   av.recorded();
-
-    $('.jsavforward').click(function() {
-        avSlideNumber++;
-        textToSpeech(getSlideText(avSlideNumber))
-    });
-    $('.jsavbackward').click(function() {
-        avSlideNumber--;
-        textToSpeech(getSlideText(avSlideNumber))
-    });
-    $('.jsavbegin').click(function() {
-        avSlideNumber = 1;
-        textToSpeech(getSlideText(avSlideNumber))
-    });
-    $('.jsavend').click(function() {
-        avSlideNumber = 17;
-        textToSpeech(getSlideText(avSlideNumber))
-    });
 });
