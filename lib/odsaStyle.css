@@ -267,6 +267,7 @@
   white-space: nowrap;
   overflow: hidden;
   z-index:500;
+  outline: 0;
 }
 .soundOff {
   position:relative;
@@ -290,6 +291,7 @@
   white-space: nowrap;
   overflow: hidden;
   z-index:500;
+  outline: 0;
 }
 .sound:hover {
   background-color: #888;
