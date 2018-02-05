@@ -67,7 +67,9 @@
   "chapters": {
     "Programming": {
       "Searching/BinarySearch": {},
-      "Spatial/PRquadtree": {}
+      "Spatial/PRquadtree": {},
+      "Graphs": {}
+
     }, 
     "Appendix": {
       "Glossary": {},
